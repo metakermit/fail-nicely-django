@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from brokenapp.views import brokenview
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', brokenview, name='brokenview')
 ]
