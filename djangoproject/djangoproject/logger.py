@@ -16,6 +16,8 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False, # keep Django's default loggers
     'formatters': {
+        # see full list of attributes here:
+        # https://docs.python.org/3/library/logging.html#logrecord-attributes
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
@@ -23,7 +25,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'timestampthread': {
-            'format': "%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s] [%(filepath)s:%(lineno)s]  %(message)s",
+            'format': "%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s] [%(name)-20.20s]  %(message)s",
         },
     },
     'handlers': {

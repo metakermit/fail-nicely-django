@@ -18,9 +18,9 @@ to the default Django loggers.
 Sample log file output:
 
 ```
-2016-04-05 18:51:49,305 [Thread-3    ] [INFO ] [brokenapp.views:9]  This is a manually logged INFO string.
-2016-04-05 18:51:49,305 [Thread-3    ] [DEBUG] [brokenapp.views:10]  This is a manually logged DEBUG string.
-2016-04-05 18:51:49,306 [Thread-3    ] [ERROR] [django.request:284]  Internal Server Error: /
+2016-04-05 22:12:32,984 [Thread-1    ] [INFO ] [djangoproject.logger]  This is a manually logged INFO string.
+2016-04-05 22:12:32,984 [Thread-1    ] [DEBUG] [djangoproject.logger]  This is a manually logged DEBUG string.
+2016-04-05 22:12:32,984 [Thread-1    ] [ERROR] [django.request      ]  Internal Server Error: /
 Traceback (most recent call last):
   File "/Users/kermit/.virtualenvs/fail-nicely-django/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
     response = self.process_exception_by_middleware(e, request)
