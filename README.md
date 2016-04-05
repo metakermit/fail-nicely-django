@@ -5,14 +5,31 @@ fail-nicely-django
 
 Desired features:
 
-- [] stdout & rotating file logging
+- [ ] stdout & rotating file logging
 - [x] timestamps in the log format
-- [] show how to upgrade to Sentry
-- [] logs visible from runserver, gunicorn, uwsgi, systemd, honcho, Docker
+- [ ] show how to upgrade to Sentry
+- [ ] logs visible from runserver, gunicorn, uwsgi, systemd, honcho, Docker
+- [ ] deploy to Heroku button which just works with `heroku logs`
 
-Tested in Django 1.9, but should work since 1.3, though 1.9 made some changes
-to the default Django loggers described
-[here](https://docs.djangoproject.com/en/1.9/releases/1.9/#default-logging-changes-19).
+Tested in Django 1.9, but should work since 1.3, though 1.9 made
+[some changes](https://docs.djangoproject.com/en/1.9/releases/1.9/#default-logging-changes-19)
+to the default Django loggers.
+
+Sample log file output:
+
+```
+2016-04-05 18:51:49,305 [Thread-3    ] [INFO ] [brokenapp.views:9]  This is a manually logged INFO string.
+2016-04-05 18:51:49,305 [Thread-3    ] [DEBUG] [brokenapp.views:10]  This is a manually logged DEBUG string.
+2016-04-05 18:51:49,306 [Thread-3    ] [ERROR] [django.request:284]  Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/kermit/.virtualenvs/fail-nicely-django/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/kermit/.virtualenvs/fail-nicely-django/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/kermit/projekti/git/fail-nicely-django/djangoproject/brokenapp/views.py", line 12, in brokenview
+    raise Exception('This is an exception raised in a view.')
+Exception: This is an exception raised in a view.
+```
 
 
 Why?
@@ -49,10 +66,18 @@ Can I try it?
 
 To test the setup locally:
 
-    cd djangoproject
-    # TODO: pip install -r requirements.txt
-    python manage.py runserver
+    python3 -m venv venv
+    source ./venv/bin/activate
+    pip install -r requirements.txt
+    python djangoproject/manage.py migrate
+    python djangoproject/manage.py runserver
 
+And in another tab admire your logs:
+
+    tail -f djangoproject.log
+
+To trigger some errors and log messages
+just open/refresh <http://localhost:8000/>.
 
 Nice, I want this!
 ------------------
