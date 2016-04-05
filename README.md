@@ -61,6 +61,10 @@ log messages in your console. Things like Docker kind of religiously depend on
 the executable outputting its own log files to stdout,
 so why not do it this way?
 
+[Others](http://stackoverflow.com/questions/5739830/simple-log-to-file-example-for-django-1-3/7045981)
+seem to be missing "complete working example code" for effectively using
+Django's logging capabilities too.
+
 For this reason and after having
 [some problems](https://github.com/benoitc/gunicorn/issues/1124#issuecomment-161990634)
 getting Django/Flask, `gunicorn` and `supervisord`
