@@ -65,8 +65,8 @@ so why not do it this way?
 seem to be missing "complete working example code" for effectively using
 Django's logging capabilities too.
 
-For this reason and after having
-[some problems](https://github.com/benoitc/gunicorn/issues/1124#issuecomment-161990634)
+For these reason and after having
+[some problems of my own](https://github.com/benoitc/gunicorn/issues/1124#issuecomment-161990634)
 getting Django/Flask, `gunicorn` and `supervisord`
 to behave nicely with the log output, I started assembling
 the best options I found into a nice example configuration. This is still
@@ -96,14 +96,16 @@ just open/refresh <http://localhost:8000/>.
 Nice, I want this!
 ------------------
 
-Cool, then just copy the *djangoproject/djangoproject/logger.py* file
-to your project (into the same folder where your *settings.py* is located)
+Cool, then just copy the
+[*djangoproject/djangoproject/logger.py*](https://github.com/metakermit/fail-nicely-django/blob/master/djangoproject/djangoproject/logger.py)
+file to your project (into the same folder where your *settings.py* is located)
 and add the following line to the bottom of your *settings.py* file:
 
     from .logger import LOGGING
 
 Then in every part of your project where you wanna log something manually,
-either import the logger like in *djangoproject/brokenapp/views.py*.
+either import the logger like in
+[*djangoproject/brokenapp/views.py*](https://github.com/metakermit/fail-nicely-django/blob/master/djangoproject/brokenapp/views.py).
 Alternatively, if you want the logger name to be something other
 than `djangoproject.logger`, add to the top of every module
 where you want to log something:
