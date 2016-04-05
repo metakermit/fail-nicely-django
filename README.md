@@ -92,14 +92,14 @@ just open/refresh <http://localhost:8000/>.
 Nice, I want this!
 ------------------
 
-Cool, then just copy the *djangoproject/logger.py* file to your project
-(into the same folder where your *settings.py* is located)
+Cool, then just copy the *djangoproject/djangoproject/logger.py* file
+to your project (into the same folder where your *settings.py* is located)
 and add the following line to the bottom of your *settings.py* file:
 
     from .logger import LOGGING
 
 Then in every part of your project where you wanna log something manually,
-either import the logger like in *brokenproject/views.py*.
+either import the logger like in *djangoproject/brokenapp/views.py*.
 Alternatively, if you want the logger name to be something other
 than `djangoproject.logger`, add to the top of every module
 where you want to log something:
