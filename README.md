@@ -5,11 +5,11 @@ fail-nicely-django
 
 Desired features:
 
-- [ ] stdout & rotating file logging
+- [x] stdout & rotating file logging
 - [x] timestamps in the log format
-- [ ] show how to upgrade to Sentry
 - [ ] logs visible from runserver, gunicorn, uwsgi, systemd, honcho, Docker
 - [ ] deploy to Heroku button which just works with `heroku logs`
+- [ ] show how to upgrade to Sentry
 
 Tested in Django 1.9, but should work since 1.3, though 1.9 made
 [some changes](https://docs.djangoproject.com/en/1.9/releases/1.9/#default-logging-changes-19)
@@ -43,7 +43,7 @@ They evaporate into the circuitry's chasm of nothingness... They cease to be.
 
 
 It somehow seems odd to have “the default” and
-“it's probably not what you want” describe the same thing :) ...
+“it's probably not what you want” describe the same thing :smiley: ...
 
 > “If the disable_existing_loggers key in the LOGGING dictConfig is set to True
 (which is the default) then all loggers from the default configuration will be
@@ -56,9 +56,18 @@ some or all of the default loggers [...].”
 >
 >  — Excerpt From: The Official Django Documentation
 
-Second, if you do use loggers, the `manage.py runserver` command doesn't output
-them in your console. Things like Docker kind of religiously depend on the
-executable outputting its own log files to stdout, so why not do it this way?
+Second, if you do use loggers, the `runserver`/`gunicorn` process doesn't output
+log messages in your console. Things like Docker kind of religiously depend on
+the executable outputting its own log files to stdout,
+so why not do it this way?
+
+For this reason and after having
+[some problems](https://github.com/benoitc/gunicorn/issues/1124#issuecomment-161990634)
+getting Django/Flask, `gunicorn` and `supervisord`
+to behave nicely with the log output, I started assembling
+the best options I found into a nice example configuration. This is still
+work in progress, as I'm learning about the components involved as I'm going along,
+so suggestions and patches are welcome :smiley:.
 
 
 Can I try it?
@@ -78,6 +87,7 @@ And in another tab admire your logs:
 
 To trigger some errors and log messages
 just open/refresh <http://localhost:8000/>.
+
 
 Nice, I want this!
 ------------------
