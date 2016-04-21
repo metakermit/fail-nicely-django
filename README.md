@@ -3,7 +3,10 @@ fail-nicely-django
 
 *An example Django project with nice logging settings for debugging failures.*
 
-Desired features:
+![Bugs falling down](https://media.giphy.com/media/6WMXVZxdSIONW/giphy.gif)
+
+Features
+--------
 
 - [x] stdout & rotating file logging
 - [x] timestamps in the log format
@@ -70,8 +73,7 @@ For these reason and after having
 getting Django/Flask, `gunicorn` and `supervisord`
 to behave nicely with the log output, I started assembling
 the best options I found into a nice example configuration. This is still
-work in progress, as I'm learning about the components involved as I'm going along,
-so suggestions and patches are welcome :smiley:.
+work in progress, so suggestions and patches are welcome :smiley:.
 
 
 Can I try it?
