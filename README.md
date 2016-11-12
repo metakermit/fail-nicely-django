@@ -11,7 +11,7 @@ Features
 - [x] stdout & rotating file logging
 - [x] timestamps in the log format
 - [ ] logs visible from runserver, gunicorn, uwsgi, systemd, honcho, Docker
-- [ ] deploy to Heroku button which just works with `heroku logs`
+- [x] deploy to Heroku button which just works with `heroku logs`
 - [ ] show how to upgrade to Sentry
 
 Tested in Django 1.9, but should work since 1.3, though 1.9 made
@@ -98,6 +98,12 @@ You can also try it on Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+And you should be able to examine the logs after you refresh the page.
+
+    heroku logs -t --app myherokuapp
+
+Open <https://myherokuapp.herokuapp.com> in your browser
+to generate some exceptions (substitute your real app name).
 
 
 Nice, I want this!
