@@ -1,7 +1,7 @@
 fail-nicely-django
 ==================
 
-*An example Django project with nice logging settings for debugging failures.*
+An example Django project with nice logging settings for debugging failures.
 
 ![Bugs falling down](https://media.giphy.com/media/6WMXVZxdSIONW/giphy.gif)
 
@@ -93,6 +93,11 @@ And in another tab admire your logs:
 
 To trigger some errors and log messages
 just open/refresh <http://localhost:8000/>.
+
+You can also try it on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 
 
 Nice, I want this!

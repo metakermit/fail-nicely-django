@@ -1,0 +1,8 @@
+{
+  "name": "fail-nicely-django",
+  "description": "An example Django project with nice logging settings for debugging failures.",
+  "image": "heroku/python",
+  "repository": "https://github.com/metakermit/fail-nicely-django",
+  "keywords": ["python", "django" ],
+  "addons": []
+}
