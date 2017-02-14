@@ -89,10 +89,13 @@ To test the setup locally:
 
 And in another tab admire your logs:
 
-    tail -f djangoproject.log
+    tail -f djangoproject/djangoproject.log
 
 To trigger some errors and log messages
 just open/refresh <http://localhost:8000/>.
+
+To see gunicorn output, issue `honcho start`
+and open/refresh <http://localhost:5000/>
 
 You can also try it on Heroku:
 
