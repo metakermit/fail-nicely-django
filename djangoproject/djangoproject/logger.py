@@ -2,14 +2,32 @@ import os
 import logging
 
 from .settings import BASE_DIR
+from .settings import DEBUG
 
-# the basic logger other apps can import
-logger = logging.getLogger(__name__)
-
-# Note, doing this manually in every module results in nicer output:
+# Usage in other modules:
+#
+#     from djangoproject.logger import log
+#     log.info('some output')
+#
+# Note, doing this manually in other modules results in nicer output:
 #
 #     import logging
-#     logger = logging.getLogger(__name__)
+#     log = logging.getLogger(__name__)
+#     log.info('some output')
+
+# the basic logger other apps can import
+log = logging.getLogger(__name__)
+
+# the minimum reported level
+if DEBUG:
+    min_level = 'DEBUG'
+else:
+    min_level = 'INFO'
+
+# the minimum reported level for Django's modules
+# optionally set to DEBUG to see database queries etc.
+# or set to min_level to control it using the DEBUG flag
+min_django_level ='INFO'
 
 # logging dictConfig configuration
 LOGGING = {
@@ -31,7 +49,7 @@ LOGGING = {
     'handlers': {
         'logfile': {
             # optionally raise to INFO to not fill the log file too quickly
-            'level': 'DEBUG', # DEBUG or higher goes to the log file
+            'level': min_level, # this level or higher goes to the log file
             'class':'logging.handlers.RotatingFileHandler',
             # IMPORTANT: replace with your desired logfile name!
             'filename': os.path.join(BASE_DIR, 'djangoproject.log'),
@@ -40,21 +58,21 @@ LOGGING = {
             'formatter': 'timestampthread'
         },
         'console': {
-            'level': 'DEBUG', # DEBUG or higher goes to the console
+            'level': min_level, # this level or higher goes to the console
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django': { # configure all of Django's loggers
             'handlers': ['logfile', 'console'],
-            'level': 'INFO', # set to debug to see e.g. database queries
+            'level': min_django_level, # this level or higher goes to the console
             'propagate': False, # don't propagate further, to avoid duplication
         },
         # root configuration – for all of our own apps
         # (feel free to do separate treatment for e.g. brokenapp vs. sth else)
         '': {
             'handlers': ['logfile', 'console'],
-            'level': 'DEBUG',
+            'level': min_level, # this level or higher goes to the console,
         },
     },
 }

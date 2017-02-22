@@ -127,7 +127,11 @@ than `djangoproject.logger`, add to the top of every module
 where you want to log something:
 
     import logging
-    logger = logging.getLogger(__name__)
+    log = logging.getLogger(__name__)
+
+Profit:
+
+    log.info('this is very important to log')
 
 That's it, rock on!
 
